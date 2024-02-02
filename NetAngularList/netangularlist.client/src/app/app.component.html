@@ -1,0 +1,80 @@
+<mat-toolbar>
+  <div class="container left-align">
+    <span>NICE LOGO</span>
+  </div>
+</mat-toolbar>
+
+<p *ngIf="!inServiceClients">Loading... Please refresh once the ASP.NET backend has started. </p>
+
+<h2 class="container">In service</h2>
+
+<mat-card>
+  <mat-card-content>
+    <table *ngIf="inServiceClients">
+      <thead>
+        <tr>
+          <th>Number in line</th>
+          <th>Full name</th>
+          <th>Check-in time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of inServiceClients">
+          <td>{{ client.numberInLine }}</td>
+          <td>{{ client.fullName }}</td>
+          <td>{{ client.checkInTime }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <mat-card-actions>
+      <div fxFlex></div>
+      <button mat-raised-button
+              color="primary"
+              (click)="onNextButtonClick()">
+        Next client
+      </button>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>
+
+<h2 class="container">Clients in line</h2>
+
+<mat-card>
+  <mat-card-content>
+    <div class="add-line-container">
+      <mat-form-field class="fullname-input">
+        <mat-label>Full name</mat-label>
+        <input matInput [(ngModel)]="fullName">
+        <mat-hint>Name of the client you're going to add in the line</mat-hint>
+      </mat-form-field>
+      <button mat-raised-button
+              color="primary"
+              (click)="onAddButtonClick()"
+              [disabled]="fullName.length < 3">
+        + Add to the line
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-content>
+    <table *ngIf="inLineClients">
+      <thead>
+        <tr>
+          <th>Number in line</th>
+          <th>Full name</th>
+          <th>Check-in time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of inLineClients">
+          <td>{{ client.numberInLine }}</td>
+          <td>{{ client.fullName }}</td>
+          <td>{{ client.checkInTime | date : "hh:mm" }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card-content>
+</mat-card>

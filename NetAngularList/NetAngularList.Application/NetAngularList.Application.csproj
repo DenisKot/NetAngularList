@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NetAngularList.Communication\NetAngularList.Communication.csproj" />
+    <ProjectReference Include="..\NetAngularList.Data\NetAngularList.Data.csproj" />
+    <ProjectReference Include="..\NetAngularList.Domain\NetAngularList.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
